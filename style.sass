@@ -1,0 +1,103 @@
+@charset "utf8"
+
+@font-face
+  font-family: Amatic
+  src: url("Amatic.ttf")
+
+@font-face
+  font-family: Quicksand
+  src: url("Quicksand.ttf")
+
+
+/* VARIABLES */
+
+$black: #0f0f0f
+$blackblue: #0c0f1f
+$white: #f0f0f0
+$blue: #214052
+$darkblue: #172d3a
+$green: #31531a
+$orange: #e77000
+$gray: #999999
+$grey: $gray
+
+
+body
+  background: linear-gradient(345deg, $blackblue, $darkblue)
+  min-height: 100vh
+  color: $white
+  font-family: Quicksand, sans-serif
+  font-weight: 200
+
+
+main
+  margin: 0 auto
+  display: flex
+  flex-flow: column nowrap
+  align-items: center
+  justify-content: center
+  height: 93vh
+  width: 70%
+  max-width: 90vw
+
+.title
+  margin: 2rem
+  font-size: 2.5rem
+
+.options
+  margin: 1.5rem
+  display: flex
+  flex-flow: row nowrap
+  width: 100%
+  justify-content: space-between
+  align-items: center
+
+.optItem
+  display: flex
+  align-items: center
+
+.options label
+  font-size: 1.05rem
+  margin: 0.35em
+
+.options select
+  padding: 0.35rem
+
+.btn
+  font-family: Quicksand, sans-serif
+  text-transform: uppercase
+  background-color: $white
+  color: $black
+  font-size: 0.9rem
+  padding: 0.35em 0.75em
+  margin: 0.25em
+  font-weight: 600
+
+
+.startBtn
+
+article
+  display: flex
+  flex-flow: column nowrap
+  align-items: center
+
+.status
+  margin: 2rem
+  font-weight: 200
+  font-size: 3rem
+
+.timer
+  height: 350px
+  font-size: 6rem
+  margin: 0.35em 0.75em
+  font-family: Amatic, sans-serif
+
+
+.secondaryBtns
+
+
+footer 
+  height: 7vh
+
+.info
+  text-align: center

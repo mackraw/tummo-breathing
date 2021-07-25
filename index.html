@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <title>Tummo Breathing</title>
+  </head>
+  <body>
+    <!-- 
+    1. number of breaths (10-50)
+    2. breathing pace
+    3. sounds
+    4. flow:
+      - set options & start
+      - breaths (animation & finish btn)
+      - retention (timer)
+      - recovery breath
+   -->
+
+    <main>
+      <h1 class="title">Tummo Breathing</h1>
+      <aside class="options">
+        <div class="optItem">
+          <label for="numBreaths">Breaths</label>
+          <select name="numBreaths" id="numBreaths">
+            <option value="0">--</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+            <option value="45">45</option>
+            <option value="50">50</option>
+          </select>
+        </div>
+        <div class="optItem">
+          <label for="breathingPace">Pace</label>
+          <select name="breathingPace" id="breathingPace">
+            <option value="0">--</option>
+            <option value="Slow">Slow</option>
+            <option value="Medium">Medium</option>
+            <option value="Fast">Fast</option>
+          </select>
+        </div>
+        <div class="optItem">
+          <button class="startBtn btn">Start</button>
+        </div>
+      </aside>
+      <article>
+        <h2 class="status">Round 1</h2>
+        <div class="timer"> 3:47 </div>
+        <div class="secondaryBtns">
+          <button class="goRetentionBtn btn">Go into Retention</button>
+          <button class="resetBtn btn">Reset</button>
+        </div>
+      </article>
+    </main>
+    <footer>
+      <p class="info">Copyleft info</p>
+    </footer>
+  </body>
+</html>
