@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Tummo Breathing</title>
   </head>
   <body>
@@ -23,9 +23,9 @@
 
     <main>
       <h1 class="title">Tummo Breathing</h1>
-      <aside class="options">
+      <section class="options">
         <div class="optItem">
-          <label for="numBreaths">Breaths</label>
+          <label for="numBreaths">Breaths per Round</label>
           <select name="numBreaths" id="numBreaths">
             <option value="0">--</option>
             <option value="10">10</option>
@@ -40,7 +40,18 @@
           </select>
         </div>
         <div class="optItem">
-          <label for="breathingPace">Pace</label>
+          <label for="numRounds">Number of Rounds</label>
+          <select name="numRounds" id="numRounds">
+            <option value="0">--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="optItem">
+          <label for="breathingPace">Pace of Breathing</label>
           <select name="breathingPace" id="breathingPace">
             <option value="0">--</option>
             <option value="Slow">Slow</option>
@@ -49,17 +60,20 @@
           </select>
         </div>
         <div class="optItem">
+          <button class="resetBtn btn">Reset</button>
           <button class="startBtn btn">Start</button>
         </div>
-      </aside>
-      <article>
-        <h2 class="status">Round 1</h2>
-        <div class="timer"> 3:47 </div>
+      </section>
+      <section class="timerSection">
+        <h2 class="roundInfo">Round <span class="roundNo"></span> out of <span class="totalRounds"></span></h2>
+        <div class="timerBorder">
+          <div class="timer">3:47</div>
+          <div class="breathCounter">10</div>
+        </div>
         <div class="secondaryBtns">
           <button class="goRetentionBtn btn">Go into Retention</button>
-          <button class="resetBtn btn">Reset</button>
         </div>
-      </article>
+      </section>
     </main>
     <footer>
       <p class="info">Copyleft info</p>

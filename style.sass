@@ -34,34 +34,38 @@ main
   margin: 0 auto
   display: flex
   flex-flow: column nowrap
+  justify-content: flex-start
   align-items: center
-  justify-content: center
-  height: 93vh
+  height: 95vh
   width: 70%
   max-width: 90vw
 
 .title
-  margin: 2rem
+  margin: 1rem 2rem
   font-size: 2.5rem
+  text-align: center
 
 .options
-  margin: 1.5rem
+  margin: 1rem
   display: flex
-  flex-flow: row nowrap
+  flex-flow: row wrap
   width: 100%
-  justify-content: space-between
-  align-items: center
+  justify-content: center
+  align-items: baseline
 
 .optItem
   display: flex
+  flex-flow: column nowrap
   align-items: center
+  justify-content: center
+  margin: 1rem
 
 .options label
   font-size: 1.05rem
-  margin: 0.35em
+  margin: 0.75rem
 
 .options select
-  padding: 0.35rem
+  padding: 0.5rem
 
 .btn
   font-family: Quicksand, sans-serif
@@ -69,35 +73,42 @@ main
   background-color: $white
   color: $black
   font-size: 0.9rem
-  padding: 0.35em 0.75em
-  margin: 0.25em
+  padding: 0.5rem 1rem
+  margin: 0.5rem 1rem
   font-weight: 600
 
+.hidden
+  transform: translateY(-100%)
+  visibility: hidden
 
 .startBtn
 
-article
+.timerSection
   display: flex
-  flex-flow: column nowrap
+  flex-flow: column
   align-items: center
 
-.status
-  margin: 2rem
+.roundInfo
+  margin: 1rem
   font-weight: 200
-  font-size: 3rem
+  font-size: 1.5rem
 
 .timer
-  height: 350px
   font-size: 6rem
-  margin: 0.35em 0.75em
+  margin: 1rem
   font-family: Amatic, sans-serif
 
+.timerBorder
+  border: 5px solid $white
 
 .secondaryBtns
-
+  // margin: 1rem
 
 footer 
-  height: 7vh
+  height: 5vh
 
 .info
   text-align: center
+  font-size: 0.75rem
+  margin: 0 auto
+  width: 50%
