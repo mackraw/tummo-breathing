@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
     <script src="script.js" defer></script>
     <title>Tummo Breathing</title>
   </head>
@@ -23,7 +23,9 @@
 
     <main>
       <h1 class="title">Tummo Breathing</h1>
+
       <section class="options">
+
         <div class="optItem">
           <label for="numBreaths">Breaths per Round</label>
           <select name="numBreaths" id="numBreaths">
@@ -39,6 +41,7 @@
             <option value="50">50</option>
           </select>
         </div>
+
         <div class="optItem">
           <label for="numRounds">Number of Rounds</label>
           <select name="numRounds" id="numRounds">
@@ -50,6 +53,7 @@
             <option value="5">5</option>
           </select>
         </div>
+
         <div class="optItem">
           <label for="breathingPace">Pace of Breathing</label>
           <select name="breathingPace" id="breathingPace">
@@ -60,23 +64,29 @@
           </select>
         </div>
         <div class="optItem">
-          <button class="resetBtn btn">Reset</button>
+          <button class="stopBtn btn">Stop</button>
           <button class="startBtn btn">Start</button>
         </div>
       </section>
+
       <section class="timerSection">
-        <h2 class="roundInfo">Round <span class="roundNo"></span> out of <span class="totalRounds"></span></h2>
+
+        <h2 class="roundInfo">Round <span class="roundNo">--</span> out of <span class="totalRounds">--</span></h2>
+
         <div class="timerBorder">
-          <div class="timer">3:47</div>
-          <div class="breathCounter">10</div>
+          <div class="timer">--:--</div>
+          <div class="breathCounter">--</div>
         </div>
         <div class="secondaryBtns">
           <button class="goRetentionBtn btn">Go into Retention</button>
         </div>
       </section>
+
     </main>
+
     <footer>
       <p class="info">Copyleft info</p>
     </footer>
+
   </body>
 </html>

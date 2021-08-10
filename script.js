@@ -1,25 +1,34 @@
 'use strict';
 
-const breaths = document.querySelector('#numBreaths');
-const rounds = document.querySelector('#numRounds');
-const paceSelect = document.querySelector('#breathingPace');
+const inputBreaths = document.querySelector('#numBreaths');
+const inputRounds = document.querySelector('#numRounds');
+const inputPace = document.querySelector('#breathingPace');
+
+// layout options to be shown and hidden
 const options = document.querySelector('.options');
 const secondaryBtns = document.querySelector('.secondaryBtns');
-const roundInfo = document.querySelector('.roundInfo');
-const breathCounter = document.querySelector('.breathCounter');
-let speed;
-
-const roundNo = document.querySelector('.roundNo');
-const totalRounds = document.querySelector('.totalRounds');
-
 const startBtn = document.querySelector('.startBtn');
-const timer = document.querySelector('.timer');
+const retentionBtn = document.querySelector('.goRetentionBtn');
+const stopBtn = document.querySelector('.stopBtn');
+
+// Round info displayed to user
+const roundInfo = document.querySelector('.roundInfo');
+const roundNoDiv = document.querySelector('.roundNo');
+const totalRoundsDiv = document.querySelector('.totalRounds');
+
+// main display
+const timerDiv = document.querySelector('.timer');
+const breathDiv = document.querySelector('.breathCounter');
+
+let speed; // assigned based on pace
+let breathCounter; // interval to count breaths
+let startTiming; // timer interval
 
 startBtn.addEventListener('click', () => {
-  let numBreaths = parseInt(breaths.value);
-  let numRounds = parseInt(rounds.value);
-  let pace = paceSelect.value;
-  totalRounds.textContent = numRounds;
+  let numBreaths = parseInt(inputBreaths.value);
+  let numRounds = parseInt(inputRounds.value);
+  let pace = inputPace.value;
+  totalRoundsDiv.textContent = numRounds;
 
   // Show and hide sections
   options.classList.add('hidden');
@@ -33,60 +42,58 @@ startBtn.addEventListener('click', () => {
   } else if (pace === 'Medium') {
     speed = 3750;
   } else {
-    speed = 500;
+    speed = 1500;
   }
 
-  // Start counting
-  startCounting(numRounds, numBreaths);
+  // Count rounds and breaths
+  countRounds(numRounds, numBreaths, speed);
 });
 
-async function startCounting(numRounds, numBreaths) {
-  console.log({ numRounds });
-  for (let round = 1; round <= numRounds; round++) {
-    console.log({ round });
-    roundNo.textContent = round;
-    await countUp(numBreaths);
-  }
-}
+function countBreaths(numBreaths, speed) {
+  return new Promise((success) => {
+    displayBreaths(numBreaths);
 
-function countUp(numBreaths) {
-  let breathNo = 1;
-  return new Promise((resolve) => {
-    const countingUp = setInterval(() => {
-      breathCounter.textContent = breathNo;
-      if (breathNo == numBreaths + 1) {
-        clearInterval(countingUp);
-        breathCounter.textContent = '--';
+    breathCounter = setInterval(() => {
+      numBreaths--;
+      displayBreaths(numBreaths);
+      if (numBreaths <= 1) {
+        clearInterval(breathCounter);
+        success();
       }
-      breathNo++;
-      resolve();
     }, speed);
   });
 }
 
+function displayBreaths(numBreaths) {
+  breathDiv.textContent = numBreaths;
+}
 
+async function countRounds(numRounds, numBreaths, speed) {
+  for (let round = 1; round <= numRounds; round++) {
+    roundNoDiv.textContent = round;
+    await countBreaths(numBreaths, speed);
+  }
+}
 
+// Retention timer
+function timer() {
+  let seconds = 0;
+  displayTimer(seconds);
 
-//===================
- // Start counting
+  startTiming = setInterval(() => {
+    seconds++;
+    displayTimer(seconds);
+  }, 1000);
+}
 
+function displayTimer(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const secondsInMinute = seconds % 60;
+  console.log({ minutes, secondsInMinute });
+}
 
-
-// NOT WORKING
-// let round = 1;
-// while (round <= numRounds) {
-//   console.log({ numRounds });
-//   console.log({ round });
-//   let breathNo = 1;
-//   const countingUp = setInterval(() => {
-//     roundNo.textContent = round;
-//     breathCounter.textContent = breathNo;
-//     if (breathNo == numBreaths + 1) {
-//       breathNo = 0;
-//     }
-//     breathNo++;
-//     clearInterval(countingUp);
-//   }, speed);
-//   round++;
-// }
-// breathCounter.textContent = '--';
+// Stop retention timer
+retentionBtn.addEventListener('click', timer);
+stopBtn.addEventListener('click', () => {
+  clearInterval(startTiming);
+});
